@@ -1,6 +1,11 @@
 {% set name = "gstlal-calibration" %}
 {% set version = "1.3.0" %}
 
+# dependencies
+{% set gstlal_version = "1.8.0" %}
+{% set lal_version = "7.1.0" %}
+{% set lalmetaio_version = "2.0.0" %}
+
 package:
   name: {{ name|lower }}
   version: {{ version }}
@@ -13,7 +18,7 @@ source:
 
 build:
   number: 0
-  skip: true  # [win or py>=30]
+  skip: true  # [win or py>36]
 
 requirements:
   build:
@@ -22,26 +27,26 @@ requirements:
     - pkg-config  # [unix]
   host:
     - fftw
-    - glib
     - gsl
     - gstreamer
     - gst-plugins-base
     - gstlal >=1.5.0
-    - lal >=6.19.0
-    - lalmetaio >=1.5.0
+    - libglib
+    - liblal >={{ lal_version }}
+    - liblalmetaio >={{ lalmetaio_version }}
     - python
   run:
     - fftw
-    - glib
     - gsl
     - gstreamer
     - gst-plugins-base
     - gstlal >=1.5.0
     - kafka-python
-    - lal >=6.19.2
-    - lalmetaio >=1.5.0
+    - libglib
+    - liblal >={{ lal_version }}
+    - liblalmetaio >={{ lalmetaio_version }}
     - ligo-scald
-    - ligo-segments
+    - ligo-segments >=1.2.0
     - python
     - python-lal
   run_constrained:
