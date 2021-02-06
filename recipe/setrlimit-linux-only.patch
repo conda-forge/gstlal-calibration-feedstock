@@ -1,0 +1,38 @@
+From 10186f12447ef330085a63486f01f0e566b77cdb Mon Sep 17 00:00:00 2001
+From: Duncan Macleod <duncan.macleod@ligo.org>
+Date: Fri, 5 Feb 2021 00:36:39 +0000
+Subject: [PATCH 3/3] gstlal-calibration: only call setrlimit on linux
+
+it causes errors on macos with python3
+---
+ gstlal-calibration/bin/gstlal_compute_strain | 14 ++++++++------
+ 1 file changed, 8 insertions(+), 6 deletions(-)
+
+diff --git a/gstlal-calibration/bin/gstlal_compute_strain b/gstlal-calibration/bin/gstlal_compute_strain
+index d135be462..251b81f92 100755
+--- a/gstlal-calibration/bin/gstlal_compute_strain
++++ b/gstlal-calibration/bin/gstlal_compute_strain
+@@ -91,12 +91,14 @@ def write_graph(demux):
+ def setrlimit(res, lim):
+ 	hard_lim = resource.getrlimit(res)[1]
+ 	resource.setrlimit(res, (lim if lim is not None else hard_lim, hard_lim))
+-# set the number of processes and total set size up to hard limit and
+-# shrink the per-thread stack size (default is 10 MiB)
+-setrlimit(resource.RLIMIT_NPROC, None)
+-setrlimit(resource.RLIMIT_AS, None)
+-setrlimit(resource.RLIMIT_RSS, None)
+-setrlimit(resource.RLIMIT_STACK, 1024*1024)
++
++if sys.platform == "linux":
++	# set the number of processes and total set size up to hard limit and
++	# shrink the per-thread stack size (default is 10 MiB)
++	setrlimit(resource.RLIMIT_NPROC, None)
++	setrlimit(resource.RLIMIT_AS, None)
++	setrlimit(resource.RLIMIT_RSS, None)
++	setrlimit(resource.RLIMIT_STACK, 1024*1024)
+ 
+ #
+ # Function definition to obtain the current GPS time
+-- 
+2.20.1
+
