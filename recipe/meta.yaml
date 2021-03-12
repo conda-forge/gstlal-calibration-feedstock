@@ -3,8 +3,10 @@
 
 # dependencies
 {% set gstlal_version = "1.8.0" %}
+{% set gstlal_ugly_version = "1.9.0" %}
 {% set lal_version = "7.1.0" %}
 {% set lalmetaio_version = "2.0.0" %}
+{% set ligo_segments_version = "1.2.0" %}
 
 package:
   name: {{ name|lower }}
@@ -20,7 +22,7 @@ source:
 
 build:
   number: 0
-  skip: true  # [win or py>36]
+  skip: true  # [win]
 
 requirements:
   build:
@@ -32,7 +34,7 @@ requirements:
     - gsl
     - gstreamer
     - gst-plugins-base
-    - gstlal >=1.5.0
+    - gstlal >={{ gstlal_version }}
     - libglib
     - liblal >={{ lal_version }}
     - liblalmetaio >={{ lalmetaio_version }}
@@ -42,13 +44,15 @@ requirements:
     - gsl
     - gstreamer
     - gst-plugins-base
-    - gstlal >=1.5.0
+    - gstlal >={{ gstlal_version }}
+    - gstlal-ugly >={{ gstlal_ugly_version }}
     - kafka-python
     - libglib
     - liblal >={{ lal_version }}
     - liblalmetaio >={{ lalmetaio_version }}
     - ligo-scald
-    - ligo-segments >=1.2.0
+    - ligo-segments >={{ ligo_segments_version }}
+    - numpy
     - python
     - python-lal
   run_constrained:
