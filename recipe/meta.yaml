@@ -17,8 +17,6 @@ source:
   sha256: 0d1bc7d17879873ed66c76446ba11b7d26a0c281f4740dd763b0a581102afa9b
   patches:
     - missing-links.patch
-    # https://git.ligo.org/lscsoft/gstlal/-/merge_requests/28
-    - setrlimit-linux-only.patch
 
 build:
   number: 0
