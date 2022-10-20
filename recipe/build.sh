@@ -9,6 +9,9 @@ pushd _build
 export GSL_LIBS="-L${PREFIX}/lib -lgsl"
 export GSTLAL_LIBS="-L${PREFIX}/lib -lgstlal -lgstlaltags -lgstlaltypes"
 
+# ignore deprecation warning from distutils, it breaks ac_python_devel.m4
+export PYTHONWARNINGS="${PYTHONWARNINGS},ignore:The distutils package:DeprecationWarning"
+
 # configure
 ${SRC_DIR}/configure \
   --prefix=${PREFIX} \
