@@ -1,5 +1,5 @@
 {% set name = "gstlal-calibration" %}
-{% set version = "1.3.1" %}
+{% set version = "1.4.0" %}
 
 # dependencies
 {% set gstlal_version = "1.8.0" %}
@@ -14,12 +14,12 @@ package:
 
 source:
   url: http://software.ligo.org/lscsoft/source/{{ name }}-{{ version }}.tar.gz
-  sha256: 0d1bc7d17879873ed66c76446ba11b7d26a0c281f4740dd763b0a581102afa9b
+  sha256: e24a9a0eca90dc7f08ca6918358229d6a46ddec8d42aea8b7bae384ebbb1a25b
   patches:
     - missing-links.patch
 
 build:
-  number: 4
+  number: 0
   skip: true  # [win]
 
 requirements:
