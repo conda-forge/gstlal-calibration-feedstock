@@ -2,10 +2,10 @@
 {% set version = "1.4.0" %}
 
 # dependencies
-{% set gstlal_version = "1.8.0" %}
-{% set gstlal_ugly_version = "1.9.0" %}
-{% set lal_version = "7.1.0" %}
-{% set lalmetaio_version = "2.0.0" %}
+{% set gstlal_version = "1.10.0" %}
+{% set gstlal_ugly_version = "1.10.0" %}
+{% set lal_version = "7.2.4" %}
+{% set lalmetaio_version = "3.0.2" %}
 {% set ligo_segments_version = "1.2.0" %}
 
 package:
@@ -36,6 +36,7 @@ requirements:
     - libglib
     - liblal >={{ lal_version }}
     - liblalmetaio >={{ lalmetaio_version }}
+    - numpy
     - python
   run:
     - fftw
@@ -50,9 +51,11 @@ requirements:
     - liblalmetaio >={{ lalmetaio_version }}
     - ligo-scald
     - ligo-segments >={{ ligo_segments_version }}
-    - numpy
+    - matplotlib-base
+    - {{ pin_compatible('numpy') }}
     - python
     - python-lal
+    - scipy
   run_constrained:
     - __osx >={{ MACOSX_DEPLOYMENT_TARGET|default("10.9") }}  # [osx]
 
