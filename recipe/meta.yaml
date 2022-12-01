@@ -16,7 +16,10 @@ source:
   url: http://software.ligo.org/lscsoft/source/{{ name }}-{{ version }}.tar.gz
   sha256: e24a9a0eca90dc7f08ca6918358229d6a46ddec8d42aea8b7bae384ebbb1a25b
   patches:
+    # patch fix for https://git.ligo.org/Calibration/gstlal-calibration/-/issues/18
     - missing-links.patch
+    # hack around https://git.ligo.org/Calibration/gstlal-calibration/-/issues/13
+    - firtools-int_max_str_digits.patch
 
 build:
   ignore_run_exports:
