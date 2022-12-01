@@ -68,6 +68,10 @@ test:
     - gstlal.calibhandler
     - gstlal.calibration_parts
   commands:
+    # check plugins
+    - gst-inspect-1.0 cmath
+    - gst-inspect-1.0 gstlalcalibration
+    - gst-inspect-1.0 splitcounter
     # check executables
     - gstlal_calibration_aggregator --help
     - gstlal_compute_strain --help
