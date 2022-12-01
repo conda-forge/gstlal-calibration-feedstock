@@ -15,6 +15,8 @@ export PYTHONWARNINGS="${PYTHONWARNINGS},ignore:The distutils package:Deprecatio
 
 # configure
 ${SRC_DIR}/configure \
+  --disable-static \
+  --enable-shared \
   --prefix=${PREFIX} \
 ;
 
