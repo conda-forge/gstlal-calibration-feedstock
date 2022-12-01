@@ -1,11 +1,11 @@
 {% set name = "gstlal-calibration" %}
-{% set version = "1.3.1" %}
+{% set version = "1.4.0" %}
 
 # dependencies
-{% set gstlal_version = "1.8.0" %}
-{% set gstlal_ugly_version = "1.9.0" %}
-{% set lal_version = "7.1.0" %}
-{% set lalmetaio_version = "2.0.0" %}
+{% set gstlal_version = "1.10.0" %}
+{% set gstlal_ugly_version = "1.10.0" %}
+{% set lal_version = "7.2.4" %}
+{% set lalmetaio_version = "3.0.2" %}
 {% set ligo_segments_version = "1.2.0" %}
 
 package:
@@ -14,12 +14,18 @@ package:
 
 source:
   url: http://software.ligo.org/lscsoft/source/{{ name }}-{{ version }}.tar.gz
-  sha256: 0d1bc7d17879873ed66c76446ba11b7d26a0c281f4740dd763b0a581102afa9b
+  sha256: e24a9a0eca90dc7f08ca6918358229d6a46ddec8d42aea8b7bae384ebbb1a25b
   patches:
+    # patch fix for https://git.ligo.org/Calibration/gstlal-calibration/-/issues/18
     - missing-links.patch
+    # hack around https://git.ligo.org/Calibration/gstlal-calibration/-/issues/13
+    - firtools-int_max_str_digits.patch
 
 build:
-  number: 4
+  error_overlinking: true
+  ignore_run_exports:
+    - numpy
+  number: 0
   skip: true  # [win]
 
 requirements:
@@ -30,29 +36,30 @@ requirements:
   host:
     - fftw
     - gsl
-    - gstreamer
     - gst-plugins-base
+    - gstreamer
     - gstlal >={{ gstlal_version }}
     - libglib
     - liblal >={{ lal_version }}
-    - liblalmetaio >={{ lalmetaio_version }}
+    - numpy
     - python
   run:
     - fftw
     - gsl
-    - gstreamer
     - gst-plugins-base
+    - gstreamer
     - gstlal >={{ gstlal_version }}
     - gstlal-ugly >={{ gstlal_ugly_version }}
     - kafka-python
     - libglib
     - liblal >={{ lal_version }}
-    - liblalmetaio >={{ lalmetaio_version }}
     - ligo-scald
     - ligo-segments >={{ ligo_segments_version }}
-    - numpy
+    - matplotlib-base
+    - {{ pin_compatible('numpy') }}
     - python
     - python-lal
+    - scipy
   run_constrained:
     - __osx >={{ MACOSX_DEPLOYMENT_TARGET|default("10.9") }}  # [osx]
 
@@ -61,6 +68,10 @@ test:
     - gstlal.calibhandler
     - gstlal.calibration_parts
   commands:
+    # check plugins
+    - gst-inspect-1.0 cmath
+    - gst-inspect-1.0 gstlalcalibration
+    - gst-inspect-1.0 splitcounter
     # check executables
     - gstlal_calibration_aggregator --help
     - gstlal_compute_strain --help
