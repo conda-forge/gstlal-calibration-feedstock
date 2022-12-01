@@ -22,6 +22,7 @@ source:
     - firtools-int_max_str_digits.patch
 
 build:
+  error_overlinking: true
   ignore_run_exports:
     - numpy
   number: 0
@@ -35,25 +36,23 @@ requirements:
   host:
     - fftw
     - gsl
-    - gstreamer
     - gst-plugins-base
+    - gstreamer
     - gstlal >={{ gstlal_version }}
     - libglib
     - liblal >={{ lal_version }}
-    - liblalmetaio >={{ lalmetaio_version }}
     - numpy
     - python
   run:
     - fftw
     - gsl
-    - gstreamer
     - gst-plugins-base
+    - gstreamer
     - gstlal >={{ gstlal_version }}
     - gstlal-ugly >={{ gstlal_ugly_version }}
     - kafka-python
     - libglib
     - liblal >={{ lal_version }}
-    - liblalmetaio >={{ lalmetaio_version }}
     - ligo-scald
     - ligo-segments >={{ ligo_segments_version }}
     - matplotlib-base
