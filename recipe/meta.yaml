@@ -17,7 +17,9 @@ source:
   sha256: f5e83d4000af0ff4ecf78fe37bc6cdb106570ee752f0d3944438f0d83860fafe
   patches:
     # patch fix for https://git.ligo.org/Calibration/gstlal-calibration/-/issues/18
-    - missing-links.patch
+    - link-fftw.patch
+    # patch fix for https://git.ligo.org/Calibration/gstlal-calibration/-/issues/26
+    - link-gsl.patch
 
 build:
   error_overlinking: true
