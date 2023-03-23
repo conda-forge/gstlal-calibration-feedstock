@@ -18,8 +18,6 @@ source:
   patches:
     # patch fix for https://git.ligo.org/Calibration/gstlal-calibration/-/issues/18
     - missing-links.patch
-    # hack around https://git.ligo.org/Calibration/gstlal-calibration/-/issues/13
-    - firtools-int_max_str_digits.patch
 
 build:
   error_overlinking: true
