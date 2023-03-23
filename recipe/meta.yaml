@@ -1,5 +1,5 @@
 {% set name = "gstlal-calibration" %}
-{% set version = "1.4.0" %}
+{% set version = "1.5.0" %}
 
 # dependencies
 {% set gstlal_version = "1.10.0" %}
@@ -14,7 +14,7 @@ package:
 
 source:
   url: http://software.ligo.org/lscsoft/source/{{ name }}-{{ version }}.tar.gz
-  sha256: e24a9a0eca90dc7f08ca6918358229d6a46ddec8d42aea8b7bae384ebbb1a25b
+  sha256: f5e83d4000af0ff4ecf78fe37bc6cdb106570ee752f0d3944438f0d83860fafe
   patches:
     # patch fix for https://git.ligo.org/Calibration/gstlal-calibration/-/issues/18
     - missing-links.patch
@@ -25,7 +25,7 @@ build:
   error_overlinking: true
   ignore_run_exports:
     - numpy
-  number: 3
+  number: 0
   skip: true  # [win]
 
 requirements:
