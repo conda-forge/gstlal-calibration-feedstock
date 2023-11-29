@@ -65,8 +65,8 @@ requirements:
 
 test:
   imports:
-    - gstlal.calibhandler
-    - gstlal.calibration_parts
+    - gstlalcalibration.calibhandler
+    - gstlalcalibration.calibration_parts
   commands:
     # check plugins
     - gst-inspect-1.0 cmath
