@@ -1,5 +1,5 @@
 {% set name = "gstlal-calibration" %}
-{% set version = "1.5.2" %}
+{% set version = "1.5.3" %}
 
 # dependencies
 {% set gstlal_version = "1.10.0" %}
@@ -14,7 +14,7 @@ package:
 
 source:
   url: http://software.ligo.org/lscsoft/source/{{ name }}-{{ version }}.tar.gz
-  sha256: 0d535c749148bf45649bc2503c53d80c1056507a676522c33c343d34a94d9229
+  sha256: 183213d9e9f3cb7a8858eafcc1a65a1574e46191ad05a8fca9208653740026b7
   patches:
     # patch fix for https://git.ligo.org/Calibration/gstlal-calibration/-/issues/18
     - link-fftw.patch
@@ -65,8 +65,8 @@ requirements:
 
 test:
   imports:
-    - gstlal.calibhandler
-    - gstlal.calibration_parts
+    - gstlalcalibration.calibhandler
+    - gstlalcalibration.calibration_parts
   commands:
     # check plugins
     - gst-inspect-1.0 cmath
