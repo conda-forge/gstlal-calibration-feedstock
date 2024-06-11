@@ -1,5 +1,5 @@
 {% set name = "gstlal-calibration" %}
-{% set version = "1.5.4" %}
+{% set version = "1.5.5" %}
 
 # dependencies
 {% set gstlal_version = "1.10.0" %}
@@ -13,8 +13,8 @@ package:
   version: {{ version }}
 
 source:
-  url: http://software.ligo.org/lscsoft/source/{{ name }}-{{ version }}.tar.gz
-  sha256: 733bc9703f4109c3a811520f2fdc7ac1eed1898dab9981cb1c3cee4a3430d489
+  url: https://software.igwn.org/lscsoft/source/{{ name }}-{{ version }}.tar.gz
+  sha256: e184ba2f1af04317a11b5ce326312e15fbb70a9bcfc2d73a1a91aabff15eb923
   patches:
     # patch fix for https://git.ligo.org/Calibration/gstlal-calibration/-/issues/18
     - link-fftw.patch
