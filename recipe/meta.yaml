@@ -26,7 +26,7 @@ build:
   ignore_run_exports:
     - numpy
   number: 0
-  skip: true  # [win]
+  skip: true  # [win or py >= 312]
 
 requirements:
   build:
