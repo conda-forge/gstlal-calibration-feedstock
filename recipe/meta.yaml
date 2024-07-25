@@ -25,7 +25,7 @@ build:
   error_overlinking: true
   ignore_run_exports:
     - numpy
-  number: 0
+  number: 1
   skip: true  # [win or py >= 312]
 
 requirements:
@@ -57,7 +57,6 @@ requirements:
     - ligo-scald
     - ligo-segments >={{ ligo_segments_version }}
     - matplotlib-base
-    - {{ pin_compatible('numpy') }}
     - python
     - python-lal
     - scipy
