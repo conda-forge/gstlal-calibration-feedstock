@@ -23,10 +23,8 @@ source:
 
 build:
   error_overlinking: true
-  ignore_run_exports:
-    - numpy
-  number: 0
-  skip: true  # [win or py >= 312]
+  number: 1
+  skip: true  # [win]
 
 requirements:
   build:
@@ -42,7 +40,7 @@ requirements:
     - gstlal >={{ gstlal_version }}
     - libglib
     - liblal >={{ lal_version }}
-    - numpy
+    #- numpy  <-- not linked against, allow gstlal to bring it in for us
     - python
   run:
     - fftw
@@ -57,7 +55,7 @@ requirements:
     - ligo-scald
     - ligo-segments >={{ ligo_segments_version }}
     - matplotlib-base
-    - {{ pin_compatible('numpy') }}
+    - numpy
     - python
     - python-lal
     - scipy
