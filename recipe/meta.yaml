@@ -16,6 +16,8 @@ source:
   url: https://software.igwn.org/lscsoft/source/{{ name }}-{{ version }}.tar.gz
   sha256: 374c4e9b5284e8e1d49d7bbc78ec5243714d17c500ac8881cee7088e4b2a9e5d
   patches:
+    # patch use of imp module in py-compile (old autoconf)
+    - py-compile-imp.patch
     # patch fix for https://git.ligo.org/Calibration/gstlal-calibration/-/issues/18
     - link-fftw.patch
     # patch fix for https://git.ligo.org/Calibration/gstlal-calibration/-/issues/26
@@ -23,10 +25,8 @@ source:
 
 build:
   error_overlinking: true
-  ignore_run_exports:
-    - numpy
-  number: 0
-  skip: true  # [win or py >= 312]
+  number: 1
+  skip: true  # [win]
 
 requirements:
   build:
@@ -42,7 +42,7 @@ requirements:
     - gstlal >={{ gstlal_version }}
     - libglib
     - liblal >={{ lal_version }}
-    - numpy
+    #- numpy  <-- not linked against, allow gstlal to bring it in for us
     - python
   run:
     - fftw
@@ -51,13 +51,13 @@ requirements:
     - gstreamer
     - gstlal >={{ gstlal_version }}
     - gstlal-ugly >={{ gstlal_ugly_version }}
-    - kafka-python
+    - kafka-python-ng
     - libglib
     - liblal >={{ lal_version }}
     - ligo-scald
     - ligo-segments >={{ ligo_segments_version }}
     - matplotlib-base
-    - {{ pin_compatible('numpy') }}
+    - numpy
     - python
     - python-lal
     - scipy
