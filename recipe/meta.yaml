@@ -51,7 +51,7 @@ requirements:
     - gstreamer
     - gstlal >={{ gstlal_version }}
     - gstlal-ugly >={{ gstlal_ugly_version }}
-    - kafka-python
+    - kafka-python-ng
     - libglib
     - liblal >={{ lal_version }}
     - ligo-scald
