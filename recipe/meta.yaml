@@ -16,8 +16,6 @@ source:
   url: https://software.igwn.org/lscsoft/source/{{ name }}-{{ version }}.tar.gz
   sha256: 9791352b962631605846a3efb81e22232a979829cf0ce289424a3d9426a784c5
   patches:
-    # patch use of imp module in py-compile (old autoconf)
-    - py-compile-imp.patch
     # patch fix for https://git.ligo.org/Calibration/gstlal-calibration/-/issues/18
     - link-fftw.patch
     # patch fix for https://git.ligo.org/Calibration/gstlal-calibration/-/issues/26
