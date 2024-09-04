@@ -19,9 +19,9 @@ fftw:
 gsl:
 - '2.7'
 gst_plugins_base:
-- '1.22'
+- '1.24'
 gstreamer:
-- '1.22'
+- '1.24'
 pin_run_as_build:
   python:
     min_pin: x.x
