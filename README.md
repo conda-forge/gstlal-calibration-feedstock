@@ -3,15 +3,13 @@ About gstlal-calibration-feedstock
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/gstlal-calibration-feedstock/blob/main/LICENSE.txt)
 
-Home: https://lscsoft.docs.ligo.org/gstlal/
+Home: https://git.ligo.org/calibration/gstlal-calibration
 
 Package license: GPL-2.0-or-later
 
 Summary: GStreamer for GW data analysis (calibration parts)
 
-Development: https://git.ligo.org/lscsoft/gstlal/
-
-Documentation: https://lscsoft.docs.ligo.org/gstlal/
+Development: https://git.ligo.org/calibration/gstlal-calibration
 
 This package contains the plugins and shared libraries required to
 run the gstlal calibration software.
