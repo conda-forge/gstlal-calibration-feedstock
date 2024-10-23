@@ -40,7 +40,6 @@ requirements:
     - gstlal >={{ gstlal_version }}
     - libglib
     - liblal >={{ lal_version }}
-    #- numpy  <-- not linked against, allow gstlal to bring it in for us
     - python
   run:
     - fftw
@@ -74,9 +73,8 @@ test:
     - gstlal_compute_strain --help
 
 about:
-  home: https://lscsoft.docs.ligo.org/gstlal/
-  dev_url: https://git.ligo.org/lscsoft/gstlal/
-  doc_url: https://lscsoft.docs.ligo.org/gstlal/
+  home: https://git.ligo.org/calibration/gstlal-calibration
+  dev_url: https://git.ligo.org/calibration/gstlal-calibration
   license: GPL-2.0-or-later
   license_family: GPL
   license_file: COPYING
