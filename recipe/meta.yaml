@@ -24,6 +24,9 @@ source:
     - link-gsl.patch
 
 build:
+  ignore_run_exports:
+    # zlib is needed during configure, but not linked
+    - libzlib
   error_overlinking: true
   number: 0
   skip: true  # [win]
@@ -43,6 +46,7 @@ requirements:
     - libglib
     - liblal >={{ lal_version }}
     - python
+    - zlib
   run:
     - fftw
     - gsl
