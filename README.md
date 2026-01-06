@@ -14,7 +14,6 @@ Development: https://git.ligo.org/calibration/gstlal-calibration
 This package contains the plugins and shared libraries required to
 run the gstlal calibration software.
 
-
 Current build status
 ====================
 
