@@ -24,7 +24,7 @@ source:
     - link-gsl.patch
 
 build:
-  number: 1
+  number: 2
   skip:
     - win
     # gstlal not built for Python 3.13
